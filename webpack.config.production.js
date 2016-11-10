@@ -26,8 +26,6 @@
  *      Compressor is a tree transformer which reduces the code size by applying various optimizations on the AST.
  *
  * 'NODE_ENV'
- * React relies on process.env.NODE_ENV based optimizations.
- * If we force it to production, React will get in an optimized manner.
  * This will disable some checks (eg. property type checks) and give you a smaller build and improved performance.
  *    Note: That JSON.stringify is needed as webpack will perform string replace "as is".
  *    In this case we'll want to end up with strings as that's what various comparisons expect, not just production.
@@ -69,9 +67,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'scripts'),
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
   }

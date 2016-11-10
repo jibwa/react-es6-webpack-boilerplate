@@ -1,0 +1,36 @@
+img {
+	transition: .5s;
+	border: 2px #CCCCCC solid;
+}
+img.dropped{
+    animation: new-item-animation .3s linear forwards;
+}
+
+img.drop-area {
+	opacity: .75;
+}
+img.dragging {
+	opacity: .25;
+    animation: dragged-item-animation .1s linear forwards;
+}
+
+@keyframes dragged-item-animation {
+    0% {
+        transform: scale(1);
+	}
+    100% {
+        transform: scale(.5);
+    }
+}
+
+@keyframes new-item-animation {
+    from {
+        transform: scale(.9)
+	}
+
+    to {
+        transform : scale(1);
+    }
+}
+
+

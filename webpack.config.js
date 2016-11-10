@@ -31,10 +31,6 @@
  * Hot loader is better when used with NoErrorsPlugin and hot/only-dev-server since it eliminates page reloads
  * altogether and recovers after syntax errors.
  *
- * 'react-hot'
- * React Hot Loader is a plugin for Webpack that allows instantaneous live refresh without losing state
- * while editing React components.
- *
  * 'babel'
  * Babel enables the use of ES6 today by transpiling your ES6 JavaScript into equivalent ES5 source
  * that is actually delivered to the end user browser.
@@ -66,9 +62,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'scripts'),
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
   }
